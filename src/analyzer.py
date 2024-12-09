@@ -53,20 +53,21 @@ class CodeAnalyzer:
 
     def _check_list_comprehension_alternative(self, node: ast.For) -> None:
         if isinstance(node.body, list) and len(node.body) == 1:
-            if isinstance(node.body[0], ast.Assign):
-                self.issues.append(
-                    AnalysisResult(
-                        node.lineno,
-                        "List Building",
-                        "For loop used to build a list",
-                        "Consider using list comprehension for better performance"
+            stmt = node.body[0]
+            if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
+                func = stmt.value.func
+                if isinstance(func, ast.Attribute) and func.attr == 'append':
+                    self.issues.append(
+                        AnalysisResult(
+                            node.lineno,
+                            "List Building",
+                            "For loop used to build a list",
+                            "Consider using list comprehension for better performance"
+                        )
                     )
-                )
 
     def _analyze_complexity(self, tree: ast.AST) -> None:
-        # Implement complexity analysis
         pass
 
     def _analyze_memory_usage(self, tree: ast.AST) -> None:
-        # Implement memory usage analysis
         pass
