@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Performance Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Code Performance Analyzer</h1>
+        <form action="/analyze" method="post">
+            <textarea name="code" rows="15" cols="80" placeholder="Paste your Python code here..."></textarea>
+            <button type="submit">Analyze Code</button>
+        </form>
+    </div>
+</body>
+</html>

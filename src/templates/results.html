@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Results</h1>
+        
+        <div class="code-section">
+            <h2>Original Code</h2>
+            <pre><code>{{ code }}</code></pre>
+        </div>
+
+        <div class="results-section">
+            <h2>Identified Issues</h2>
+            {% if results %}
+                {% for result in results %}
+                    <div class="issue">
+                        <h3>Line {{ result.line_number }}: {{ result.issue_type }}</h3>
+                        <p><strong>Description:</strong> {{ result.description }}</p>
+                        <p><strong>Suggestion:</strong> {{ result.suggestion }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No issues found!</p>
+            {% endif %}
+        </div>
+        
+        <a href="/" class="button">Analyze Another Code Snippet</a>
+    </div>
+</body>
+</html>
