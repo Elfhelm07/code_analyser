@@ -15,7 +15,8 @@ An AI-powered tool that analyzes Python code snippets for potential performance 
 
    ```bash
    git clone https://github.com/Elfhelm07/code_analyser.git
-   cd code-analyzer ```
+   cd code-analyzer
+   ```
 
    
 
@@ -23,7 +24,8 @@ An AI-powered tool that analyzes Python code snippets for potential performance 
 
    ```bash
    python -m venv venv
-   source venv/bin/activate ```
+   source venv/bin/activate
+   ```
 
    
 
